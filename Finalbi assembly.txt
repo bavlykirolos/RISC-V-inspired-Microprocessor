@@ -1,0 +1,27 @@
+//this assembly program multiplies 123 by 6 then stores the result in memory and then reads it back again 
+//r0 = 0
+//r1 is the result
+//r2 is the number we add each time . multiplicand
+//r3 is the number of times we add it . multiplier
+//r4 is counter
+//r5 is start address of the subroutine
+//r6 is the return address to the main program
+//r7 is trash and then overwritten with the result as read from memory.
+
+LUI  r2, 2        // this stores 10 followed by 6 zeros , ie stores 128 in r2
+SUBI r2, r2, 5    // substract 5 from 128 . r2 expected = 123
+ADDI r3, r0, 6    // add 6 to 0 and store it in r3
+ADDI r5, r0, 10   // add 10 to 0 and store it in r5
+
+JALR r6, r5       // store return address in r6 and jump pc to address in r5
+SW   r1, r0, 63   // strore result in mem@63
+lW   r7, r0,63    // store content of mem63 in r7 //we should expect our result
+ADD  r0, r0, r0    // store 0+0 in r0
+ADD  r0, r0, r0    // store 0+0 in r0
+
+JALR r7, r6        // jump back to the main program 
+                  // sub call calls here (address stored in r5)
+add  r1, r1, r2  // increment r1 by r2 , r2 = 6
+addi r4, r4, 1   //increment counter (r3) by one 
+BEQ  r4, r3, -4  //go 5 steps back to jalr so we can exit the loop ( if r3=r4) 
+jalr  r7, r5     // loop again
