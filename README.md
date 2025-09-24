@@ -12,9 +12,7 @@ The design demonstrates a full **instruction execution pipeline** (fetch, decode
 - Instruction Decoder  
 - Memory (ROM/RAM with synchronous read/write support)
 
-> 🔹 This repository is intended to showcase hardware design skills in **digital logic, Verilog HDL, simulation/debugging, and processor architecture**.
-
-If you are interested in the details of the learning journey and testing details, please read report.pdf 
+> 🔹 This repository is intended to showcase hardware design skills in **digital logic, Verilog HDL, simulation/debugging, and processor architecture**. If you are interested in the details of the learning journey and testing details, please read report.pdf 
 
 ---
 
